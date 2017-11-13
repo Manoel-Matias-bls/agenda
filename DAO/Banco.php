@@ -21,7 +21,7 @@ class Banco
         $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
-        $this->database = "bdname";
+        $this->database = "biblioteca";
     }
     /**
     * Create a database connection or return the connection already open using Singletion Design Patern

@@ -34,7 +34,7 @@ class Livro
 
     public function getGenero()
     {
-        return $this->$genero;
+        return $this->genero;
     }
 
     public function setQtdPaginas($qtd_paginas)

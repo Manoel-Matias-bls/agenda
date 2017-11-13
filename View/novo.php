@@ -11,6 +11,28 @@ $genero = "";
 $qtd_paginas = "";
 $descricao = "";
 $result = "";
+
+$btnGravar = filter_input(INPUT_POST, "btnGravar");
+$id = filter_input(INPUT_GET, "id");
+
+if ($btnGravar) {
+    if (!$id) {
+        // Novo
+        $livro->setTitulo(filter_input(INPUT_POST, "fieldTitulo"));
+        $livro->setGenero(filter_input(INPUT_POST, "fieldGenero"));
+        $livro->setQtdPaginas(filter_input(INPUT_POST, "fieldQtdPaginas"));
+        $livro->setDescricao(filter_input(INPUT_POST, "fieldDescricao"));
+
+        if ($livroController->Cadastrar($livro)) {
+            $result = "Livro Cadastrado!";
+        } else {
+            $result = "Erro ao tentar Cadastrar!";
+        }
+    } else {
+        // Editar
+        $livro->setId($id);
+    }
+}
 ?>
 
 <div id="divNovo">
@@ -18,23 +40,23 @@ $result = "";
     <div class="row">
         <form method="post" name="form_novo">
             <div class="input-field col s12">
-                <input id="fieldTitulo" name="fieldTitulo" type="text" class="validate" value="<?php $titulo ?>"/>
+                <input id="fieldTitulo" name="fieldTitulo" type="text" class="validate" value="<?php echo $titulo ?>"/>
                 <label for="fieldTitulo">Título</label>
             </div>
             <div class="input-field col s12">
-                <input id="fieldGenero" name="fieldGenero" type="text" class="validate" value="<?php $genero ?>"/>
+                <input id="fieldGenero" name="fieldGenero" type="text" class="validate" value="<?php echo $genero ?>"/>
                 <label for="fieldGenero">Gênero</label>
             </div>
             <div class="input-field col s12">
-                <input id="fieldQtdPaginas" name="fieldQtdPaginas" type="text" class="validate" value="<?php $qtd_paginas ?>"/>
+                <input id="fieldQtdPaginas" name="fieldQtdPaginas" type="text" class="validate" value="<?php echo $qtd_paginas ?>"/>
                 <label for="fieldQtdPaginas">Qtd. Páginas</label>
             </div>
             <div class="input-field col s12">
-                <textarea id="fieldDescricao" name="fieldDescricao" class="materialize-textarea" value="<?php $descricao ?>"></textarea>
+                <textarea id="fieldDescricao" name="fieldDescricao" class="materialize-textarea"><?php echo $descricao ?></textarea>
                 <label for="fieldDescricao">Descrição</label>
             </div>
             <div class="col s12">
-                <span><?php $result ?>&nbsp;</span>
+                <span><?php echo $result ?>&nbsp;</span>
             </div>
             <div class="col s12">
                 <input type="submit" class="waves-effect green accent-3 btn" name="btnGravar" value="Gravar" />
