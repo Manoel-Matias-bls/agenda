@@ -40,7 +40,7 @@ if ($btnGravar) {
     <div class="row">
         <form method="post" name="form_novo">
             <div class="input-field col s12">
-                <input id="fieldTitulo" name="fieldTitulo" type="text" class="validate" value="<?php echo $titulo ?>"/>
+                <input id="fieldTitulo" name="fieldTitulo" type="text" class="validate" value="<?= $titulo ?>"/>
                 <label for="fieldTitulo">Título</label>
             </div>
             <div class="input-field col s12">
