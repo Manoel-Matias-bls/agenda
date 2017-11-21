@@ -48,6 +48,60 @@
         }
 
         /**
+        * Função que Atualiza um item
+        * @param $livro - Objeto a ser Atualizado
+        **/
+        public function Atualizar(Livro $livro)
+        {
+            try {
+                // Sql de atualização
+                $sql = "UPDATE livro SET titulo = :titulo, genero = :genero,
+                qtd_paginas = :qtd_paginas, descricao = :descricao
+                WHERE  id = :id";
+
+                // Parametros que serão substituidos no sql
+                $param = array(
+                        ":id" => $livro->getId(),
+                        ":titulo" => $livro->getTitulo(),
+                        ":genero" => $livro->getGenero(),
+                        ":qtd_paginas" => $livro->getQtdPaginas(),
+                        ":descricao" => $livro->getDescricao()
+                );
+                /* Executa a função contida na classe DAO/banco.php que
+                substitui os parametros e excuta o código sql */
+                return $this->banco->ExecuteNonQuery($sql, $param);
+            } catch (PDOException $e) {
+                if ($this->debug) {
+                    echo "Error: {$e->getMessage()}";
+                }
+            }
+        }
+
+        /**
+        * Função que deleta um item
+        * @param $livro - Objeto a ser deletado
+        **/
+        public function DeletarLivro($id)
+        {
+            try {
+                // Sql de atualização
+                $sql = "DELETE FROM livro WHERE  id = :id";
+
+                // Parametros que serão substituidos no sql
+                $param = array(
+                        ":id" => $id
+                );
+                /* Executa a função contida na classe DAO/banco.php que
+                substitui os parametros e excuta o código sql */
+                return $this->banco->ExecuteNonQuery($sql, $param);
+            } catch (PDOException $e) {
+                if ($this->debug) {
+                    echo "Error: {$e->getMessage()}";
+                }
+            }
+        }
+
+        /**
         * Pesquisa todos os itens da tabela livro
         **/
         public function PesquisarTodos()

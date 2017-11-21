@@ -3,6 +3,15 @@ require_once("Controller/LivroController.php");
 
 $livroController = new LivroController();
 
+$id = filter_input(INPUT_GET, "id");
+if ($id > 0) {
+    if ($livroController->DeletarLivro($id)) {
+        echo "Livro Excluido!";
+    } else {
+        echo "Erro ao tentar Excluir!";
+    }
+}
+
 $livros = $livroController->PesquisarTodos();
 ?>
 
@@ -31,8 +40,9 @@ $livros = $livroController->PesquisarTodos();
                 <td><?php echo $livro->getTitulo(); ?></td>
                 <td><?php echo $livro->getGenero(); ?></td>
                 <td>
-                    <a href="?pagina=novo&id=<?php echo $livro->getId(); ?>" class="waves-efffect green accent-3 btn">Editar</a>
+                    <a href="?pagina=novo&id=<?php echo $livro->getId(); ?>" class="waves-efffect yellow accent-3 btn">Editar</a>
                     <a href="?pagina=ver&id=<?php echo $livro->getId(); ?>" class="waves-efffect blue accent-3 btn">Ver</a>
+                    <a href="?pagina=pesquisa&id=<?php echo $livro->getId(); ?>" class="waves-efffect red accent-3 btn">Excluir</a>
                 </td>
             </tr>
         <?php

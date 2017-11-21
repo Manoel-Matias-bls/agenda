@@ -15,14 +15,22 @@ $result = "";
 $btnGravar = filter_input(INPUT_POST, "btnGravar");
 $id = filter_input(INPUT_GET, "id");
 
+if ($id) {
+    $livro_edicao = $livroController->PesquisarLivro($id);
+
+    $titulo = $livro_edicao->getTitulo();
+    $genero = $livro_edicao->getGenero();
+    $qtd_paginas = $livro_edicao->getQtdPaginas();
+    $descricao = $livro_edicao->getDescricao();
+}
+
 if ($btnGravar) {
+    $livro->setTitulo(filter_input(INPUT_POST, "fieldTitulo"));
+    $livro->setGenero(filter_input(INPUT_POST, "fieldGenero"));
+    $livro->setQtdPaginas(filter_input(INPUT_POST, "fieldQtdPaginas"));
+    $livro->setDescricao(filter_input(INPUT_POST, "fieldDescricao"));
     if (!$id) {
         // Novo
-        $livro->setTitulo(filter_input(INPUT_POST, "fieldTitulo"));
-        $livro->setGenero(filter_input(INPUT_POST, "fieldGenero"));
-        $livro->setQtdPaginas(filter_input(INPUT_POST, "fieldQtdPaginas"));
-        $livro->setDescricao(filter_input(INPUT_POST, "fieldDescricao"));
-
         if ($livroController->Cadastrar($livro)) {
             $result = "Livro Cadastrado!";
         } else {
@@ -31,6 +39,11 @@ if ($btnGravar) {
     } else {
         // Editar
         $livro->setId($id);
+        if ($livroController->Atualizar($livro)) {
+            $result = "Livro Atualizado!";
+        } else {
+            $result = "Erro ao tentar Atualizar!";
+        }
     }
 }
 ?>

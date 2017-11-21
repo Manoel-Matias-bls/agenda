@@ -20,7 +20,7 @@ class Banco
         $this->debug = true;
         $this->server = "localhost";
         $this->user = "root";
-        $this->password = "";
+        $this->password = "app@123.";
         $this->database = "biblioteca";
     }
     /**
