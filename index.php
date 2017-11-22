@@ -22,13 +22,13 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="image/banner.jpg">
-                            <span id="image-title" class="card-title" style="font-weight: bold;">
-                                Biblioteca Online
+                            <span id="image-title" class="card-title" style="font-weight: bold; color: darkgrey;">
+                                Agenda Online
                             </span>
                         </div>
                         <div class="card-action">
-                            <a href="?pagina=novo">Novo Livro</a>
-                            <a href="?pagina=pesquisa">Pesquisar Livro</a>
+                            <a href="?pagina=novo">Novo Contato</a>
+                            <a href="?pagina=pesquisa">Pesquisar Contato</a>
                         </div>
                         <div class="card-content">
                             <?php

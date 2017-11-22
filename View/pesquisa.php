@@ -1,7 +1,7 @@
 <?php
-require_once("Controller/LivroController.php");
+require_once("Controller/AgendaController.phpp");
 
-$livroController = new LivroController();
+$livroController = new AgendaController();
 
 $id = filter_input(INPUT_GET, "id");
 if ($id > 0) {

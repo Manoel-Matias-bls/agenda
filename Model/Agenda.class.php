@@ -2,10 +2,10 @@
 class Livro
 {
     private $id;
-    private $titulo;
-    private $genero;
-    private $qtd_paginas;
-    private $descricao;
+    private $nome;
+    private $numero;
+    private $endereco;
+    private $foto;
 
     public function setId($id)
     {
@@ -17,43 +17,45 @@ class Livro
         return $this->id;
     }
 
-    public function setTitulo($titulo)
+    public function setNome($nome)
     {
-        $this->titulo = $titulo;
+        $this->nome = $nome;
     }
 
-    public function getTitulo()
+    public function getNome()
     {
-        return $this->titulo;
+        return $this->nome;
     }
 
-    public function setGenero($genero)
+    public function setNumero($numero)
     {
-        $this->genero = $genero;
+        $this->numero = $numero;
     }
 
-    public function getGenero()
+    public function getNumero()
     {
-        return $this->genero;
+        return $this->numero;
     }
 
-    public function setQtdPaginas($qtd_paginas)
+    public function setEndereco($endereco)
     {
-        $this->qtd_paginas = $qtd_paginas;
+        $this->endereco = $endereco;
     }
 
-    public function getQtdPaginas()
+    public function getEndereco()
     {
-        return $this->qtd_paginas;
+        return $this->endereco;
     }
 
-    public function setDescricao($descricao)
+    public function setFoto($foto)
     {
-        $this->descricao = $descricao;
+        $this->foto = $foto;
     }
 
-    public function getDescricao()
+    public function getFoto()
     {
-        return $this->descricao;
+        return $this->foto;
     }
+
+
 }

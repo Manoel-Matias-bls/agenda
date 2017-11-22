@@ -1,46 +1,46 @@
 <?php
-    require_once("DAO/LivroDAO.php");
+    require_once("DAO/AgendaDAO.php");
 
-    class LivroController
+    class AgendaController
     {
         /* Cria uma variavel global*/
-        private $livroDAO;
+        private $agendaDAO;
 
         /**
         * Construtor da classe, roda toda vez que a classe é chamada
         **/
         public function __construct()
         {
-            /* Cria um novo livro com a variavel global*/
-            $this->livroDAO = new LivroDAO();
+            /* Cria um novo contato com a variavel global*/
+            $this->agendaDAO = new AgendaDAO();
         }
 
         /**
         * Cadastra um novo Livro
-        * @param $livro - Livro a ser cadastrado
+        * @param $agenda - Livro a ser cadastrado
         **/
-        public function Cadastrar(Livro $livro)
+        public function Cadastrar(Agenda $agenda)
         {
-            /* Verifica se todos os campos do livro tem uma ou mais letras,
+            /* Verifica se todos os campos do contato tem uma ou mais letras,
             para que nenhum campo seja vazio*/
-            if ((strlen(trim($livro->getTitulo())) > 0) &&
-            (strlen(trim($livro->getGenero())) > 0) &&
-            (strlen(trim($livro->getDescricao())) > 0) &&
-            (strlen(trim($livro->getQtdPaginas())) > 0)) {
+            if ((strlen(trim($agenda->getTitulo())) > 0) &&
+            (strlen(trim($agenda->getGenero())) > 0) &&
+            (strlen(trim($agenda->getDescricao())) > 0) &&
+            (strlen(trim($agenda->getQtdPaginas())) > 0)) {
 
                 /* Delimita genero a 45 caracteres*/
-                $livro->setGenero(substr(
-                    $livro->getGenero(),
+                $agenda->setGenero(substr(
+                    $agenda->getGenero(),
                     0,
                     45
                 ));
 
                 /* converte QtdPaginas para inteiro*/
-                $livro->getQtdPaginas = (int) $livro->getQtdPaginas();
+                $agenda->getQtdPaginas = (int) $agenda->getQtdPaginas();
 
                 /* Executa a função Cadastrar da classe DAO e retorna o
                 resultado True ou False indicando se o cadastro foi bem sucedido*/
-                return $this->livroDAO->Cadastrar($livro);
+                return $this->livroDAO->Cadastrar($agenda);
 
                 /* Caso algum campo do livro não tenha sido preenchido retorna falso*/
             } else {

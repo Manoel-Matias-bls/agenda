@@ -1,6 +1,6 @@
 <?php
-require_once("Controller/LivroController.php");
-require_once("Model/Livro.class.php");
+require_once("Controller/AgendaController.phpp");
+require_once("Model/Agenda.class.php");
 
 $id = filter_input(INPUT_GET, "id");
 ?>
@@ -9,7 +9,7 @@ $id = filter_input(INPUT_GET, "id");
     <br/>
     <?php
         if ($id) {
-            $livroController = new LivroController();
+            $livroController = new AgendaController();
             $livro = $livroController->PesquisarLivro($id);
 
             if ($livro) {

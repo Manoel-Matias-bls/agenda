@@ -1,9 +1,9 @@
 <?php
-require_once("Controller/LivroController.php");
-require_once("Model/Livro.class.php");
+require_once("Controller/AgendaController.phpp");
+require_once("Model/Agenda.class.php");
 
-$livroController = new LivroController();
-$livro = new Livro();
+$agendaController = new AgendaController();
+$agenda = new Agenda();
 
 $id = "";
 $titulo = "";
@@ -16,7 +16,7 @@ $btnGravar = filter_input(INPUT_POST, "btnGravar");
 $id = filter_input(INPUT_GET, "id");
 
 if ($id) {
-    $livro_edicao = $livroController->PesquisarLivro($id);
+    $livro_edicao = $agendaController->PesquisarLivro($id);
 
     $titulo = $livro_edicao->getTitulo();
     $genero = $livro_edicao->getGenero();
@@ -25,21 +25,21 @@ if ($id) {
 }
 
 if ($btnGravar) {
-    $livro->setTitulo(filter_input(INPUT_POST, "fieldTitulo"));
-    $livro->setGenero(filter_input(INPUT_POST, "fieldGenero"));
-    $livro->setQtdPaginas(filter_input(INPUT_POST, "fieldQtdPaginas"));
-    $livro->setDescricao(filter_input(INPUT_POST, "fieldDescricao"));
+    $agenda->setTitulo(filter_input(INPUT_POST, "fieldTitulo"));
+    $agenda->setGenero(filter_input(INPUT_POST, "fieldGenero"));
+    $agenda->setQtdPaginas(filter_input(INPUT_POST, "fieldQtdPaginas"));
+    $agenda->setDescricao(filter_input(INPUT_POST, "fieldDescricao"));
     if (!$id) {
         // Novo
-        if ($livroController->Cadastrar($livro)) {
+        if ($agendaController->Cadastrar($agenda)) {
             $result = "Livro Cadastrado!";
         } else {
             $result = "Erro ao tentar Cadastrar!";
         }
     } else {
         // Editar
-        $livro->setId($id);
-        if ($livroController->Atualizar($livro)) {
+        $agenda->setId($id);
+        if ($agendaController->Atualizar($agenda)) {
             $result = "Livro Atualizado!";
         } else {
             $result = "Erro ao tentar Atualizar!";

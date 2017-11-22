@@ -1,9 +1,9 @@
 <?php
 
     require_once("Banco.php");
-    require_once("Model/Livro.class.php");
+    require_once("Model/Agenda.class.php");
 
-    class LivroDAO
+    class AgendaDAO
     {
         private $banco;
         private $debug;
