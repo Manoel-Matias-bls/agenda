@@ -97,7 +97,7 @@
         **/
         public function PesquisarLivro($id)
         {
-            /* Verifica se o id é maio que Zero, caso não seja retorna Nulo*/
+            /* Verifica se o id é maior que Zero, caso não seja retorna Nulo*/
             if ($id > 0) {
                 /* Executa e  enviando o parametro id para a funçao PesquisarLivro
                 contida na classe DAO e retorna seu resultado*/
