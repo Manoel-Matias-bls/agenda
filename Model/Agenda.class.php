@@ -1,5 +1,5 @@
 <?php
-class Livro
+class Agenda
 {
     private $id;
     private $nome;

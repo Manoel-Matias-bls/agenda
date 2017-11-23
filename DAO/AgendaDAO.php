@@ -23,7 +23,7 @@
         * Função que cadastra um novo item
         * @param $livro - Objeto a ser cadastrado
         **/
-        public function Cadastrar(Livro $livro)
+        public function Cadastrar(Agenda $livro)
         {
             try {
                 // Sql de inserção
@@ -51,7 +51,7 @@
         * Função que Atualiza um item
         * @param $livro - Objeto a ser Atualizado
         **/
-        public function Atualizar(Livro $livro)
+        public function Atualizar(Agenda $livro)
         {
             try {
                 // Sql de atualização
@@ -121,7 +121,7 @@
                 /* Laço de repetição */
                 foreach ($itens as $item) {
                     /* Cria um novo livro */
-                    $livro = new Livro();
+                    $livro = new Agenda();
                     /* Seta os valores do item trazido do banco de dados no novo livro */
                     $livro->setId($item["id"]);
                     $livro->setTitulo($item["titulo"]);
@@ -145,7 +145,7 @@
         * Pesquisa um livro determinado pelo paramtro recebido
         * @param $id - Id do livro a ser pesquisado
         **/
-        public function PesquisarLivro($id)
+        public function PesquisarAgenda($id)
         {
             try {
 
@@ -161,7 +161,7 @@
                 $resultado = $this->banco->ExecuteQueryOneRow($sql, $param);
 
                 /* Cria um novo livro */
-                $livro = new Livro();
+                $livro = new Agenda();
 
                 /* Seta valores no novo livro*/
                 $livro->setId($resultado["id"]);

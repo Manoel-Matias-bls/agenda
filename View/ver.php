@@ -9,26 +9,26 @@ $id = filter_input(INPUT_GET, "id");
     <br/>
     <?php
         if ($id) {
-            $livroController = new AgendaController();
-            $livro = $livroController->PesquisarLivro($id);
+            $agendaController = new AgendaController();
+            $agenda = $agendaController->PesquisarLivro($id);
 
-            if ($livro) {
+            if ($agenda) {
                 ?>
             <ul>
                 <li class="title">Título</li>
-                <li class="detail"><?= $livro->getTitulo(); ?></li>
+                <li class="detail"><?= $agenda->getTitulo(); ?></li>
                 <li class="title">Gênero</li>
-                <li class="detail"><?php echo $livro->getGenero(); ?></li>
+                <li class="detail"><?php echo $agenda->getGenero(); ?></li>
                 <li class="title">Qtd. Páginas</li>
-                <li class="detail"><?php echo $livro->getQtdPaginas(); ?></li>
+                <li class="detail"><?php echo $agenda->getQtdPaginas(); ?></li>
                 <li class="title">Descrição</li>
-                <li class="detail"><?php echo $livro->getDescricao(); ?></li>
-                <li class="title"><a href="?pagina=novo&id=<?php echo $livro->getId(); ?>" class="waves-efffect green accent-3 btn">Editar</a></li>
+                <li class="detail"><?php echo $agenda->getDescricao(); ?></li>
+                <li class="title"><a href="?pagina=novo&id=<?php echo $agenda->getId(); ?>" class="waves-efffect green accent-3 btn">Editar</a></li>
             </ul>
 
             <?php
             } else {
-                echo "Livro não encontrado!";
+                echo "Contato não encontrado!";
             }
         } else {
             echo "Código não encontrado!";
