@@ -1,5 +1,5 @@
 <?php
-require_once("Controller/AgendaController.phpp");
+require_once("Controller/AgendaController.php");
 require_once("Model/Agenda.class.php");
 
 $id = filter_input(INPUT_GET, "id");
@@ -10,19 +10,17 @@ $id = filter_input(INPUT_GET, "id");
     <?php
         if ($id) {
             $agendaController = new AgendaController();
-            $agenda = $agendaController->PesquisarLivro($id);
+            $agenda = $agendaController->PesquisarAgenda($id);
 
             if ($agenda) {
                 ?>
             <ul>
-                <li class="title">Título</li>
-                <li class="detail"><?= $agenda->getTitulo(); ?></li>
-                <li class="title">Gênero</li>
-                <li class="detail"><?php echo $agenda->getGenero(); ?></li>
-                <li class="title">Qtd. Páginas</li>
-                <li class="detail"><?php echo $agenda->getQtdPaginas(); ?></li>
-                <li class="title">Descrição</li>
-                <li class="detail"><?php echo $agenda->getDescricao(); ?></li>
+                <li class="title">Nome</li>
+                <li class="detail"><?= $agenda->getNome(); ?></li>
+                <li class="title">Número</li>
+                <li class="detail"><?php echo $agenda->getNumero(); ?></li>
+                <li class="title">Endereço</li>
+                <li class="detail"><?php echo $agenda->getEndereco(); ?></li>
                 <li class="title"><a href="?pagina=novo&id=<?php echo $agenda->getId(); ?>" class="waves-efffect green accent-3 btn">Editar</a></li>
             </ul>
 

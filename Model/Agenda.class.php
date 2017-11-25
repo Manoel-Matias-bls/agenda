@@ -5,7 +5,6 @@ class Agenda
     private $nome;
     private $numero;
     private $endereco;
-    private $foto;
 
     public function setId($id)
     {
@@ -46,16 +45,5 @@ class Agenda
     {
         return $this->endereco;
     }
-
-    public function setFoto($foto)
-    {
-        $this->foto = $foto;
-    }
-
-    public function getFoto()
-    {
-        return $this->foto;
-    }
-
 
 }

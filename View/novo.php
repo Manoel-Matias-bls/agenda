@@ -1,38 +1,35 @@
 <?php
-require_once("Controller/AgendaController.phpp");
+require_once("Controller/AgendaController.php");
 require_once("Model/Agenda.class.php");
 
 $agendaController = new AgendaController();
 $agenda = new Agenda();
 
 $id = "";
-$titulo = "";
-$genero = "";
-$qtd_paginas = "";
-$descricao = "";
+$nome = "";
+$numero = "";
+$endereco = "";
 $result = "";
 
 $btnGravar = filter_input(INPUT_POST, "btnGravar");
 $id = filter_input(INPUT_GET, "id");
 
 if ($id) {
-    $livro_edicao = $agendaController->PesquisarLivro($id);
+    $agenda_edicao = $agendaController->PesquisarAgenda($id);
 
-    $titulo = $livro_edicao->getTitulo();
-    $genero = $livro_edicao->getGenero();
-    $qtd_paginas = $livro_edicao->getQtdPaginas();
-    $descricao = $livro_edicao->getDescricao();
+    $nome = $agenda_edicao->getNome();
+    $numero = $agenda_edicao->getNumero();
+    $endereco = $agenda_edicao->getEndereco();
 }
 
 if ($btnGravar) {
-    $agenda->setTitulo(filter_input(INPUT_POST, "fieldTitulo"));
-    $agenda->setGenero(filter_input(INPUT_POST, "fieldGenero"));
-    $agenda->setQtdPaginas(filter_input(INPUT_POST, "fieldQtdPaginas"));
-    $agenda->setDescricao(filter_input(INPUT_POST, "fieldDescricao"));
+    $agenda->setNome(filter_input(INPUT_POST, "fieldNome"));
+    $agenda->setNumero(filter_input(INPUT_POST, "fieldNumero"));
+    $agenda->setEndereco(filter_input(INPUT_POST, "fieldEndereco"));
     if (!$id) {
         // Novo
         if ($agendaController->Cadastrar($agenda)) {
-            $result = "Livro Cadastrado!";
+            $result = "Contato Cadastrado!";
         } else {
             $result = "Erro ao tentar Cadastrar!";
         }
@@ -40,7 +37,7 @@ if ($btnGravar) {
         // Editar
         $agenda->setId($id);
         if ($agendaController->Atualizar($agenda)) {
-            $result = "Livro Atualizado!";
+            $result = "Contato Atualizado!";
         } else {
             $result = "Erro ao tentar Atualizar!";
         }
@@ -53,20 +50,16 @@ if ($btnGravar) {
     <div class="row">
         <form method="post" name="form_novo">
             <div class="input-field col s12">
-                <input id="fieldTitulo" name="fieldTitulo" type="text" class="validate" value="<?= $titulo ?>"/>
-                <label for="fieldTitulo">Título</label>
+                <input id="fieldNome" name="fieldNome" type="text" class="validate" value="<?= $nome ?>"/>
+                <label for="fieldNome">Nome</label>
             </div>
             <div class="input-field col s12">
-                <input id="fieldGenero" name="fieldGenero" type="text" class="validate" value="<?php echo $genero ?>"/>
-                <label for="fieldGenero">Gênero</label>
+                <input id="fieldNumero" name="fieldNumero" type="text" class="validate" value="<?php echo $numero ?>"/>
+                <label for="fieldNumero">Número</label>
             </div>
             <div class="input-field col s12">
-                <input id="fieldQtdPaginas" name="fieldQtdPaginas" type="text" class="validate" value="<?php echo $qtd_paginas ?>"/>
-                <label for="fieldQtdPaginas">Qtd. Páginas</label>
-            </div>
-            <div class="input-field col s12">
-                <textarea id="fieldDescricao" name="fieldDescricao" class="materialize-textarea"><?php echo $descricao ?></textarea>
-                <label for="fieldDescricao">Descrição</label>
+                <input id="fieldEndereco" name="fieldEndereco" type="text" class="validate" value="<?php echo $endereco ?>"/>
+                <label for="fieldEndereco">Endereço</label>
             </div>
             <div class="col s12">
                 <span><?php echo $result ?>&nbsp;</span>

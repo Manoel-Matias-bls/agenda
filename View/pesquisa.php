@@ -1,5 +1,5 @@
 <?php
-require_once("Controller/AgendaController.phpp");
+require_once("Controller/AgendaController.php");
 
 $agendaController = new AgendaController();
 
@@ -25,10 +25,10 @@ $agendas = $agendaController->PesquisarTodos();
         <thead>
             <tr>
                 <th>
-                    Título
+                    Nome
                 </th>
                 <th>
-                    Gênero
+                    Número
                 </th>
             </tr>
         </thead>
@@ -37,8 +37,8 @@ $agendas = $agendaController->PesquisarTodos();
             foreach ($agendas as $agenda) {
                 ?>
             <tr>
-                <td><?php echo $agenda->getTitulo(); ?></td>
-                <td><?php echo $agenda->getGenero(); ?></td>
+                <td><?php echo $agenda->getNome(); ?></td>
+                <td><?php echo $agenda->getNumero(); ?></td>
                 <td>
                     <a href="?pagina=novo&id=<?php echo $agenda->getId(); ?>" class="waves-efffect yellow accent-3 btn">Editar</a>
                     <a href="?pagina=ver&id=<?php echo $agenda->getId(); ?>" class="waves-efffect blue accent-3 btn">Ver</a>
